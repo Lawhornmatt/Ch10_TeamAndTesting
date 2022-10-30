@@ -59,11 +59,7 @@ function typeUpdatedEntity(entity) {
 // LOGO SPLASH
 console.log(`
 \x1b[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[0m
-\x1b[0;106m C O M P A N Y   M A N A G E R \x1b[0m
-
-
-You are using \x1b[36mCompany Manager\x1b[0m,
-   where you can keep your enterprise afloat.
+\x1b[0;106m BUILD-A-TEAM \x1b[0m
 \x1b[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[0m`);
 
 // -- START UP: MAIN MENU --

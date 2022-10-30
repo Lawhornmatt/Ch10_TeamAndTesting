@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@800&display=swap');
+
+
+:root {
+
+    /* 1b0a09 */
+
+    --main-1: #160808; 
+    --main-2: #A8190F;
+    --main-3: #DF3B28;
+    --main-4: #E8A551;
+    --main-5: #87AC97;
+    --main-6: #0F757A;
+
+    --sat-1: #;
+    --sat-2: #;
+    --sat-3: #;
+    --sat-4: #;
+    --sat-5: #;
+    --sat-6: #;
+
+    --undr-1: #;
+    --undr-2: #;
+    --undr-3: #;
+    --undr-4: #664a27;
+    --undr-5: #;
+    --undr-6: #;
+
+    }
+    
+    
+/*  =========================  
+        GENERAL ELEMENTS
+    ========================= */
+    
+body {
+  background-color: var(--main-6);
+  color: var(--main-1);
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+a.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+    /* cursor: auto; */
+}
+
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    /* cursor: auto; */
+}
+    
+    
+/*  =========================  
+      GENERAL CLASSES (think Bootstrap)
+    ========================= */
+
+/* === All Flexbox Function === */
+
+/* === All Borderstyle === */
+
+
+/*  =========================  
+        SPECIFIC CLASSES (think Javascript)
+    ========================= */
+
+/* == Main Background Colors == */
+
+.main1 {
+    background-color: var(--main-1);
+}
+
+.main2 {
+    background-color: var(--main-2);
+    color: var(--undr-1);
+}
+
+.main3 {
+    background-color: var(--main-3);
+    color: var(--undr-1);
+}
+
+.main4 {
+    background-color: var(--main-4);
+    color: var(--undr-1);
+}
+
+
+/* == Saturated Background Colors == */
+
+.sat1 {
+    background-color: var(--sat-1);
+}
+
+.sat2 {
+    background-color: var(--sat-2);
+}
+
+.sat3 {
+    background-color: var(--sat-3);
+    color: var(--undr-1);
+}
+
+.sat4 {
+    background-color: var(--sat-4);
+}
+
+.sat4Drk {
+    background-color: var(--sat-4);
+    color: var(--undr-1);
+}
+
+.sat5 {
+    background-color: var(--sat-5);
+}
+
+.sat6 {
+    background-color: var(--sat-6);
+    color: var(--undr-1);
+}
+
+/* == Undertoned Background Colors == */
+
+.undr1 {
+    background-color: var(--undr-1);
+}
+
+.undr2 {
+    background-color: var(--undr-2);
+}
+
+.undr3 {
+    background-color: var(--undr-3);
+}
+
+.undr4 {
+    background-color: var(--undr-4);
+}
+
+.undr5 {
+    background-color: var(--undr-5);
+}
+
+.undr6 {
+    background-color: var(--undr-6);
+}
+    
+/*  =========================  
+              IDs
+    ========================= */
+
+
+/*  =========================  
+        ACCESSIBILITY
+    ========================= */
+@media (max-width: 690px) {
+    
+}
+
+@media (max-width: 500px) {
+    
+}

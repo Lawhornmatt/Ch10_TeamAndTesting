@@ -1,6 +1,6 @@
 # Team Profile Gen & Testing
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![Bugs](https://img.shields.io/github/issues/Lawhornmatt/Ch12_CompanyManager/bug.svg)](https://github.com/Lawhornmatt/Ch12_CompanyManager/issues)
+  [![Bugs](https://img.shields.io/github/issues/Lawhornmatt/Ch10_TeamAndTesting/bug.svg)](https://github.com/Lawhornmatt/Ch10_TeamAndTesting/issues)
 
 ## TABLE OF CONTENTS:
 
