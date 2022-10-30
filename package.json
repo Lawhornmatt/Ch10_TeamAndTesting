@@ -1,0 +1,21 @@
+{
+  "name": "employee-manager",
+  "version": "1.0.1",
+  "description": "Allows HR to checkout employee data and alter it",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "devStart": "nodemon -e js,ejs,css,html server.js"
+  },
+  "author": "Matthew T Lawhorn",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "inquirer": "^9.1.0",
+    "mysql2": "^2.2.5"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2",
+    "nodemon": "^2.0.20"
+  }
+}
