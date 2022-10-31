@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "devStart": "nodemon -e js,ejs,css,html server.js"
+    "devStart": "nodemon -e js,ejs,css,html server.js",
+    "test": "jest"
   },
   "author": "Matthew T Lawhorn",
   "license": "MIT",
