@@ -1,141 +1,17 @@
 // ====================
 //      IMPORTS
 // ====================
+
 import fs from 'fs';
 import inquirer from 'inquirer';
-import { MainMenu, DeptMenu, EmpMenu, RoleMenu } from './libs/menus.cjs';
+
+import genHTML from './libs/genHTML.cjs';
+import { genManager, genEngineer, genIntern } from './libs/genCards.cjs';
+import { Manager, Engineer, Intern } from './libs/objects.cjs';
+import { teamName, managerPrompt, chooseOquit, newEngi, newIntern } from './libs/inqPrompts.cjs';
 
 // ====================
-//   OBJECTS
-// ====================
-
-class Employee {
-
-  constructor(id, name, email) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-  };
-  
-  getId() {
-    return console.log(`Id: ${this.id}`)
-  };
-
-  getName() {
-    return console.log(`Name: ${this.name}`)
-  };
-
-  getEmail() {
-    return console.log(`Email: ${this.email}`)
-  };
-
-  getRole() {
-    return console.log(`Role: Employee`)
-  };
-};
-
-class Manager extends Employee {
-
-  constructor(id, name, email, officeNumber) {
-    super(id, name, email);
-    this.officeNumber = officeNumber;
-  };
-
-  getRole() {
-    return console.log(`Role: Manager`)
-  }
-};
-
-// ====================
-//   PROMPTS
-// ====================
-
-// ENTER MANAGER
-let managerPrompt = [
-  {
-    type: 'input',
-    name: `managerID`,
-    message: `Type in manager ID number:`,
-  },
-  {
-      type: 'input',
-      name: `managerNAME`,
-      message: `Type in the manager's name:`,
-  },
-  {
-      type: 'input',
-      name: `managerEMAIL`,
-      message: `Type in the manager's email:`,
-  },
-  {
-      type: 'input',
-      name: `managerOFFICE`,
-      message: `Type in the manager's office number:`,
-  },
-];
-
-// CHOOSE ENGI OR INTERN
-let chooseOquit = [
-  {
-    type: 'list',
-    name: 'userChoice',
-    message: 'Add a teammate or quit.',
-    choices: ['Add Engineer', 'Add Intern', 'Done with team'],
-  },
-];
-
-// NEW ENGINEER
-let newEngi = [
-  {
-      type: 'input',
-      name: `engiNAME`,
-      message: `Type in the engineer's name:`,
-  },
-  {
-      type: 'input',
-      name: `engiID`,
-      message: `Type in the engineer's ID:`,
-  },
-  {
-      type: 'input',
-      name: `engiEMAIL`,
-      message: `Type in the engineer's email:`,
-  },
-  {
-      type: 'input',
-      name: `engiGITHUB`,
-      message: `Type in the engineer's GitHub username:`,
-  },
-];
-
-// NEW INTERN
-let newIntern = [
-  {
-    type: 'input',
-    name: `internNAME`,
-    message: `Type in the intern's name:`,
-  },
-  {
-    type: 'input',
-    name: `internID`,
-    message: `Type in the intern's ID:`,
-  },
-  {
-    type: 'input',
-    name: `internEMAIL`,
-    message: `Type in the intern's email:`,
-  },
-  {
-    type: 'input',
-    name: `internSCHOOL`,
-    message: `Type in the intern's school:`,
-  },
-];
-
-
-
-// ====================
-//    MAIN FUNCTIONS
+//    GATHER USER INPUT
 // ====================
 
 // LOGO SPLASH
@@ -149,24 +25,37 @@ console.log(`
 async function startup() {
   console.log(`Let us start by the info of the manager of the team.`);
   
-  const managerInfo = await inquirer.prompt(managerPrompt);
-
-  const teamArray = [managerInfo];
+  // Ask user for a team name. This will also serve as the unique file name of the HTML file
+  const teamInfo = await inquirer.prompt(teamName)
+  .then((answer) => Object.values(answer)[0]);
+  
+  // Start making a string of cards, starting with adding the manager info first
+  var stringOfAllCards = await inquirer.prompt(managerPrompt)
+  .then((answer) => new Manager(answer.managerID, answer.managerNAME, answer.managerEMAIL, answer.managerOFFICE))
+  .then((answer) => genManager(answer));
 
   console.log(`Now lets get the information of the team members.`);
 
+  // User is prompted for engineer details, those are turned into a HTML card, and the chooseAnother prompt is given again
   async function engiFunc() {
     await inquirer.prompt(newEngi)
-    .then((answer) => teamArray.push(answer))
+    .then((answer) => new Engineer(answer.engiID, answer.engiNAME, answer.engiEMAIL, answer.engiGITHUB))
+    .then((answer) => genEngineer(answer))
+    .then((answer) => stringOfAllCards = stringOfAllCards.concat('\n', answer))
     .then((answer) => chooseAnother());
   };
 
+  // User is prompted for intern details, those are turned into a HTML card, and the chooseAnother prompt is given again
   async function internFunc() {
     await inquirer.prompt(newIntern)
-    .then((answer) => teamArray.push(answer))
+    .then((answer) => new Intern(answer.internID, answer.internNAME, answer.internEMAIL, answer.internSCHOOL))
+    .then((answer) => genIntern(answer))
+    .then((answer) => stringOfAllCards = stringOfAllCards.concat('\n', answer))
     .then((answer) => chooseAnother());
   };
   
+  // User can choose from either adding another engineer, another intern, or stopping the app
+  // If QUIT is chosen, all the data is sent to saveHTML() to be daved to disk in HTML format
   async function chooseAnother() {
     await inquirer.prompt(chooseOquit)
     .then((answer) => {
@@ -175,13 +64,24 @@ async function startup() {
       } else if (answer.userChoice == 'Add Intern') {
         internFunc();
       } else {
-        return console.log(teamArray);
+        return saveHTML(teamInfo, stringOfAllCards);
       }
     });
   };
 
   await chooseAnother();
-
 };
-    
+
+// -- SAVE THE HTML --
+// Takes in all user inputs and saves HTML file in /dist
+function saveHTML(teamName, cardString) {
+
+  // First lets get the whole HTML string
+  const completeHTMLString = genHTML(teamName, cardString);
+
+  fs.writeFile(`./dist/${teamName}-index.html`, completeHTMLString, (err) => err ? console.error(err) : console.log(`\x1b[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[0m`));
+};
+
+
+// Start the app
 startup();

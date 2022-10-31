@@ -1,7 +1,4 @@
-// GENERATE-HTML
-function genHTML(teamName, data) {
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="en">
   
       <head>
@@ -12,7 +9,7 @@ function genHTML(teamName, data) {
           <meta name="author" content="Matt Lawhorn">
           <meta name="description" content="This application was made for the UT Austin Coding Bootcamp. This is a solo project showcasing my knowledge HTML generation and code testing.">
   
-          <title>${teamName}</title>
+          <title>exampleTeam</title>
           <link rel="icon" href="./images/default.ico" type="image/x-icon">
   
           <!-- Stylizing  -->
@@ -29,7 +26,7 @@ function genHTML(teamName, data) {
       <body>
           <div class="jumbotron jumbotron-fluid">
               <div class="container">
-                  <h1 class="display-4">My Team: ${teamName}</h1>
+                  <h1 class="display-4">My Team: exampleTeam</h1>
                   <p class="lead">This page displays a card for every team you added in the Build-A-Team prompter.</p>
               </div>
           </div>
@@ -38,11 +35,55 @@ function genHTML(teamName, data) {
   
               <div class="row justify-content-center">
   
-                  ${data}
+                  <div class="card w-25 m-3">
+  <h5 class="card-header">MANAGER</h5>
+  <div class="card-body">
+      <h5 class="card-title">Name: Jimmy</h5>
+      <p class="card-text">ID: 123</p>
+      <p class="card-text">Email: fake@notreal.com</p>
+      <p class="card-text">Office#: 321</p>
+  </div>
+</div>
+<div class="card w-25 m-3">
+  <h5 class="card-header">ENGINEER</h5>
+  <div class="card-body">
+      <h5 class="card-title">Name: Saul Goodman</h5>
+      <p class="card-text">ID: 987</p>
+      <p class="card-text">Email: nope@notreal.com</p>
+      <p class="card-text">Use the button to visit my GitHub:</p>
+      <a href="#" class="btn btn-primary">https://github.com/789</a>
+  </div>
+</div>
+<div class="card w-25 m-3">
+  <h5 class="card-header">INTERN</h5>
+  <div class="card-body">
+      <h5 class="card-title">Name: Joe Biden</h5>
+      <p class="card-text">ID: 567</p>
+      <p class="card-text">Email: milarky@notreal.com</p>
+      <p class="card-text">School: Washington Uni</p>
+  </div>
+</div>
+<div class="card w-25 m-3">
+  <h5 class="card-header">ENGINEER</h5>
+  <div class="card-body">
+      <h5 class="card-title">Name: Gordon Freeman</h5>
+      <p class="card-text">ID: 234</p>
+      <p class="card-text">Email: HEV@blackmesa.com</p>
+      <p class="card-text">Use the button to visit my GitHub:</p>
+      <a href="#" class="btn btn-primary">https://github.com/432</a>
+  </div>
+</div>
+<div class="card w-25 m-3">
+  <h5 class="card-header">ENGINEER</h5>
+  <div class="card-body">
+      <h5 class="card-title">Name: Tom Morello</h5>
+      <p class="card-text">ID: 567</p>
+      <p class="card-text">Email: tom@ratm.com</p>
+      <p class="card-text">Use the button to visit my GitHub:</p>
+      <a href="#" class="btn btn-primary">https://github.com/tommo@rello</a>
+  </div>
+</div>
               </div>
           </div>
       </body>
-  </html>`
-}
-
-module.exports = genHTML;
+  </html>
