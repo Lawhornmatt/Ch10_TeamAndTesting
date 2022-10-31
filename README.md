@@ -25,12 +25,12 @@
 
 ## DESCRIPTION:
 
-This is the ReadMe for Matthew Lawhorn's project titled: Team Profile Gen & Testing  
+This is the ReadMe for Matthew Lawhorn's project, Team Profile Gen & Testing, with an app called Build-A-Team  
 This is Challenge 10 for the Fall 2022 UT Coding Bootcamp.  
 This challenge utilizes inquirer to make terminal prompts that generate HTML showcases a team.  
 The real challenge is using JEST to make tests that test our code for functionality.  
 
-<img src='./cm_scrnsht.png' alt='A screenshot of Team Profile Gen & Testing'/>
+<img src='./buildateam_scrnsht.png' alt='A screenshot of Team Profile Gen & Testing'/>
 
 <a name="installation"></a>
 
@@ -44,6 +44,7 @@ Install Node.js globally, cd to the file location of app, and run the app in Nod
 
 Follow the prompts given to create your team.  
 Run JEST via the command 'npm run test' to test code.  
+Look in the dist/ folder to find your generated HTML page.
 
 <a name="contribution"></a>
 
